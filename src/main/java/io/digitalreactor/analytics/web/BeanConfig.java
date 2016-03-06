@@ -3,6 +3,8 @@ package io.digitalreactor.analytics.web;
 import io.digitalreactor.analytics.web.dao.RegistrationSessionDao;
 import io.digitalreactor.analytics.web.dao.UserDao;
 import io.digitalreactor.analytics.web.rest.SimpleRegistration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +25,7 @@ public class BeanConfig {
     @Bean
     @Autowired
     public SimpleRegistration simpleRegistration(UserDao userDao, RegistrationSessionDao registrationSessionDao) {
-        return new SimpleRegistration(userDao, registrationSessionDao);
+        Logger logger = LoggerFactory.getLogger("registration.newUser");
+        return new SimpleRegistration(userDao, registrationSessionDao, logger);
     }
 }
