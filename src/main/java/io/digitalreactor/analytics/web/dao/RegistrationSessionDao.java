@@ -16,4 +16,8 @@ public class RegistrationSessionDao {
 
         return uuid;
     }
+
+    public String getUserName(String sessionUuid) {
+        return sessionStorage.get(sessionUuid);
+    }
 }
